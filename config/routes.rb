@@ -6,5 +6,9 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'users#show'
   #session
   post '/login', to: 'sessions#create'
-  delete '/logout', to: 'sessions#destroy' 
+  delete '/logout', to: 'sessions#destroy'
+
+  get '/discover', to: 'discover#index'
+
+  post '/friendship', to: 'friendship#create'
 end
