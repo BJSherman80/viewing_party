@@ -5,6 +5,9 @@ class User < ApplicationRecord
   validates :password, confirmation: { case_sensitive: true }
   validates :email, uniqueness: true, presence: true
 
+  has_many :friendships, dependent: :destroy
+  has_many :friends, through: :friendships
+
 
   def duplicate_email?
     User.pluck(:email).include?(email)
