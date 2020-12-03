@@ -15,7 +15,7 @@ RSpec.describe "User registration form" do
     fill_in :password_confirmation, with: password
 
     click_on "Register"
-    expect(current_path).to eq('/dashboard')
+    expect(current_path).to eq(dashboard_path)
     expect(page).to have_content("Welcome, #{name}!")
     expect(page).to have_button("Logout")
   end
