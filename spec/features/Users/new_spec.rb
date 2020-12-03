@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "User registration form" do
   it "creates new user" do
 
-    visit "/registration"
+    visit registration_path
 
     email = "user@email.com"
     password = "test"
@@ -23,7 +23,7 @@ RSpec.describe "User registration form" do
   it 'see flash for when email exists' do
     user = User.create(name: "Elvis", password: "test", email: 'user@email.com')
 
-    visit "/registration"
+    visit registration_path
 
     password = "test"
     name = "Burt"
@@ -33,13 +33,13 @@ RSpec.describe "User registration form" do
     fill_in :password, with: password
     fill_in :password_confirmation, with: password
     click_on "Register"
-    expect(current_path).to eq('/registration')
+    expect(current_path).to eq(registration_path)
     expect(page).to have_content("Email has already been taken")
   end
 
   it 'see flash for when passwords dont match' do
 
-    visit "/registration"
+    visit registration_path
     email = 'user@email.com'
     password = "test"
     name = "Burt"
@@ -49,13 +49,13 @@ RSpec.describe "User registration form" do
     fill_in :password, with: password
     fill_in :password_confirmation, with: "wrong password"
     click_on "Register"
-    expect(current_path).to eq('/registration')
+    expect(current_path).to eq(registration_path)
     expect(page).to have_content("Password and Password Confirmation fields did not match.")
   end
 
   it 'see flash for when fields are missing' do
 
-    visit "/registration"
+    visit registration_path
     email = 'user@email.com'
     password = "test"
     name = "Burt"
@@ -64,20 +64,20 @@ RSpec.describe "User registration form" do
     fill_in :password, with: password
     fill_in :password_confirmation, with: password
     click_on "Register"
-    expect(current_path).to eq('/registration')
+    expect(current_path).to eq(registration_path)
     expect(page).to have_content("You are missing required fields.")
 
     fill_in :name, with: name
     fill_in :password, with: password
     fill_in :password_confirmation, with: password
     click_on "Register"
-    expect(current_path).to eq('/registration')
+    expect(current_path).to eq(registration_path)
     expect(page).to have_content("You are missing required fields.")
 
     fill_in :email, with: email
     fill_in :name, with: name
     click_on "Register"
-    expect(current_path).to eq('/registration')
+    expect(current_path).to eq(registration_path)
     expect(page).to have_content("You are missing required fields.")
   end
 end
