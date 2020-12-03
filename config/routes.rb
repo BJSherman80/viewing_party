@@ -11,4 +11,6 @@ Rails.application.routes.draw do
   get '/discover', to: 'discover#index'
 
   post '/friendship', to: 'friendship#create'
+
+  post '/party', to: 'party#create'
 end
