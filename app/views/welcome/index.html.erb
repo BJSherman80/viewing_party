@@ -1,11 +1,26 @@
-<h1>Welcome to Viewing Party!</h1>
-<h3>Viewing Party is an app</h3>
-<%= form_tag '/login', method: :post do  %>
-  <%= label_tag :email %>
-  <%= text_field_tag :email %>
-  <%= label_tag :password %>
-  <%= password_field_tag :password %>
-  <%= submit_tag "Log In" %>
-<% end %>
+<div class="w3-content w3-container w3-padding-64" id="welcome-pg">
+  <h1 class="w3-center">Welcome to Viewing Party!</h1>
+  <h3 class="w3-center">Viewing Party is an app</h3>
+</div>
 
-<%= button_to 'Register New User','/registration', method: :get  %>
+<form action="/login" method="post">
+  <div class="container">
+    <label for="email"><strong><%= label_tag :email %></strong></label>
+    <input type="text" placeholder="Email" name="email" required>
+
+    <label for="password"><strong><%= label_tag :password %></strong></label>
+    <input type="text" placeholder="Password" name="password" required>
+
+    <button type="submit"> <%= submit_tag "Log In" %></button>
+
+    <label>
+      <input type="checkbox" checked="checked" name="remember"> Remember me
+    </label>
+  </div>
+</form>
+
+<form action="/registration" method="get">
+  <div class="container">
+    <button type="submit" class="registerbtn">Register New User</button>
+  </div>
+</form>
