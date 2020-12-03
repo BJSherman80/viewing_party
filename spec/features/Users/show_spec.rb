@@ -36,5 +36,24 @@ describe 'As a logged in user, on my dashboard' do
     expect(@user.friends.first).to eq(brett)
   end
 
-  #it no email found for friend sad path
+  it 'I get an error when theres no email found' do
+    within ".friends" do
+      fill_in :email, with: 'someone@email.com'
+      click_on 'Add Friend'
+    end
+
+    expect(current_path).to eq(dashboard_path)
+    expect(page).to have_content("There aren't any users with that email")
+  end
+
+  it "I can't add myself as a friend" do
+    within ".friends" do
+      fill_in :email, with: @user.email
+      click_on 'Add Friend'
+    end
+
+    expect(page).to have_content("That's your own email, silly!")
+  end
+
+  
 end
