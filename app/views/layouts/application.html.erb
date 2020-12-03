@@ -3,20 +3,29 @@
   <head>
     <title>ViewingParty</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all' %>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <%= javascript_include_tag 'application' %>
   </head>
 
   <body>
     <main>
-      <% flash.each do |name, msg| %>
-    <div class= "<%=name%>-flash">
-      <p><%= msg %></p>
-    </div>
-  <% end %>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm w3-cyan">
+            <% flash.each do |name, msg| %>
+            <div class= "<%=name%>-flash">
+              <p><%= msg %></p>
+            </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
       <%= yield %>
     </main>
+
     <footer>
       <img src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg" alt="The MovieDB Logo" width="75px" style="margin:10px" >
       <div>
@@ -28,5 +37,6 @@
         </p>
       </div>
     </footer>
+
   </body>
 </html>
