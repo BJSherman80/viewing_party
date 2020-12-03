@@ -34,13 +34,47 @@ footer {
   flex-direction: row;
 }
 
-input[type=text] {
-  width: 100%;
+.login-card {
+  width: 50rem;
+  padding-top: 22px;
+  border: solid 1px #999;
+  box-shadow:  0 0 10px  rgba(0,12,0,0.6);
+  -moz-box-shadow: 0 0 10px  rgba(0,12,0,0.6);
+  -webkit-box-shadow: 0 0 10px  rgba(0,12,0,0.6);
+  -o-box-shadow: 0 0 10px  rgba(0,12,0,0.6);
+  border-bottom-left-radius:15px;
+  border-bottom-right-radius:15px;
+}
+
+.register-card {
+  width: 50rem;
+  padding-top: 22px;
+  border: solid 1px #999;
+  box-shadow:  0 0 10px  rgba(0,12,0,0.6);
+  -moz-box-shadow: 0 0 10px  rgba(0,12,0,0.6);
+  -webkit-box-shadow: 0 0 10px  rgba(0,12,0,0.6);
+  -o-box-shadow: 0 0 10px  rgba(0,12,0,0.6);
+  border-bottom-left-radius:15px;
+  border-bottom-right-radius:15px;
+}
+
+.card-body {
+  margin: 15px;
+}
+
+input[type=text], input[type=password] {
+  align: center;
+  width: 70%;
   padding: 10px 10px;
   margin: 10px 0;
-  display: inline-block;
+  display: block;
   border: 1px solid #ccc;
   box-sizing: border-box;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
 }
 
 button {
@@ -50,7 +84,8 @@ button {
   margin: 8px 0;
   border: none;
   cursor: pointer;
-  width: 100%;
+  width: 25%;
+  display: block;
 }
 
 button:hover {
