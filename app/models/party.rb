@@ -6,9 +6,8 @@ class Party < ApplicationRecord
   validates :start_time, presence: true
   validates :movie_id, presence: true
 
-  def host_status
-    require "pry"; binding.pry
-    if current_user.id == user.id
+  def host_status(user)
+    if user.id == user_id
       "Hosting"
     else
       "Invited"
