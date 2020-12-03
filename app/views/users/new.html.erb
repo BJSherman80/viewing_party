@@ -1,23 +1,25 @@
-<div class="w3-content w3-container w3-padding-54" id="welcome-pg">
-  <h1 class="w3-center">New User Registration</h1>
-</div>
-
-
-
-<form action="/login" method="post">
-  <div class="container">
-    <label for="name"><strong><%= label_tag :name %></strong></label>
-    <input type="text" placeholder="Name" name="name" required>
-
-    <label for="email"><strong><%= label_tag :email %></strong></label>
-    <input type="text" placeholder="Enter Email" name="email" required>
-
-    <label for="password"><strong><%= label_tag :password %></strong></label>
-    <input type="password" placeholder="Enter Password" name="password" required>
-
-    <label for="psw-conf"><strong><%= label_tag :password_confirmation %></strong></label>
-    <input type="password" placeholder="Password Confirmation" name="psw-conf" required>
-
-    <button type="submit" class="registerbtn"> <%= submit_tag "Register" %></button>
+<center>
+  <div class="w3-content w3-container w3-padding-54" id="registration-pg">
+    <h1 class="w3-center">New User Registration</h1>
   </div>
-</form>
+
+  <section class='register-card'>
+    <div class="card-body">
+      <form action="/registration" method="post">
+          <label for="name"><strong><%= label_tag :name %></strong></label>
+          <input type="text" placeholder="Name" name="name" required>
+
+          <label for="email"><strong><%= label_tag :email %></strong></label>
+          <input type="text" placeholder="Enter Email" name="email" required>
+
+          <label for="password"><strong><%= label_tag :password %></strong></label>
+          <input type="password" placeholder="Enter Password" name="password" required>
+
+          <label for="password_confirmation"><strong><%= label_tag :password_confirmation %></strong></label>
+          <input type="password" placeholder="Password Confirmation" name="password_confirmation" required>
+
+          <button type="submit" class="registerbtn"> <%= submit_tag "Register" %></button>
+      </form>
+    </div>
+  </section>
+</center>
