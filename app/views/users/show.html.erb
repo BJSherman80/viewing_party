@@ -23,3 +23,17 @@
     <h4>You currently have no friends!</h4>
   <% end %>
 </section>
+<h2>Viewing Parties</h2>
+
+<% if current_user.parties.any? %>
+  <% current_user.parties.each do |party| %>
+    <section id='party-<%= current_user.id %>'>
+      <h4><%= party.movie.title %></h4>
+      <h4><%= party.date %></h4>
+      <h4><%= party.start_time %></h4>
+      <%= party.host_status %>
+    </section>
+  <% else %>
+    <h4>You currently have no parties</h4>
+  <% end %>
+<% end %>
