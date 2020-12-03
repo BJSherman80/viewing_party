@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     if user.save
       session[:user_id] = user.id
       flash[:notice] = "Welcome #{user.name}"
-      redirect_to '/dashboard'
+      redirect_to dashboard_path
     elsif user.duplicate_email?
       flash[:notice] = user.errors.full_messages.uniq
       render :new
