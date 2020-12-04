@@ -1,0 +1,15 @@
+<h1> Movies Page </h1>
+
+<%= button_to 'Find Top Rated Movies', '/movies', method: :get %>
+
+<%= form_with url: '/movies/search', method: :get do |f|%>
+  <%= f.search_field :search, placeholder: 'Search by movie title' %>
+  <%= f.submit 'Find Movies' %>
+<% end %>
+
+<% @movies.each do |movie| %>
+  <section class='movie'>
+    <p class='title'> <%= link_to movie[:title], "/movies/#{movie[:id]}" %></p>
+    <p class='vote_average'>Vote Average: <%= movie[:vote_average] %></p>
+  </section>
+<% end %>
