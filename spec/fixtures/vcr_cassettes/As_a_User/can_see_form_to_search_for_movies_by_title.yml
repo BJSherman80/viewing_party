@@ -1,0 +1,111 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.themoviedb.org/3/search/movie?api_key=SECURE_DATA&page=1&query=Happy%20Gilmore
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.1.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Date:
+      - Fri, 04 Dec 2020 02:23:04 GMT
+      Server:
+      - openresty
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, HEAD, POST, PUT, DELETE, OPTIONS
+      Access-Control-Expose-Headers:
+      - ETag, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, Retry-After,
+        Content-Length, Content-Range
+      Cache-Control:
+      - public, max-age=600
+      Vary:
+      - Accept-Encoding
+      X-Cache:
+      - Miss from cloudfront
+      Via:
+      - 1.1 c29390732f5bc4b2c7832623ae6e492f.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - DEN50-C2
+      X-Amz-Cf-Id:
+      - npK5-XmoSJ0Gcmdikr2UzL6bBqSTWOW7kNdo4Ek8Kbqbkl5AOFzTgg==
+    body:
+      encoding: ASCII-8BIT
+      string: '{"page":1,"results":[{"adult":false,"backdrop_path":"/yUUFAqAnn73TwGD6QaH4Hg9dQB4.jpg","genre_ids":[35],"id":9614,"original_language":"en","original_title":"Happy
+        Gilmore","overview":"Failed hockey player-turned-golf whiz Happy Gilmore --
+        whose unconventional approach and antics on the grass courts the ire of rival
+        Shooter McGavin -- is determined to win a PGA tournament so he can save his
+        granny''s house with the prize money. Meanwhile, an attractive tour publicist
+        tries to soften Happy''s image.","popularity":17.69,"poster_path":"/4RnCeRzvI1xk5tuNWjpDKzSnJDk.jpg","release_date":"1996-02-16","title":"Happy
+        Gilmore","video":false,"vote_average":6.6,"vote_count":1739}],"total_pages":1,"total_results":1}'
+  recorded_at: Fri, 04 Dec 2020 02:23:04 GMT
+- request:
+    method: get
+    uri: https://api.themoviedb.org/3/search/movie?api_key=SECURE_DATA&page=2&query=Happy%20Gilmore
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.1.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '57'
+      Connection:
+      - keep-alive
+      Date:
+      - Fri, 04 Dec 2020 02:23:04 GMT
+      Server:
+      - openresty
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, HEAD, POST, PUT, DELETE, OPTIONS
+      Access-Control-Expose-Headers:
+      - ETag, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, Retry-After,
+        Content-Length, Content-Range
+      Etag:
+      - ad2f664d2b0a17a0d4395bc0df03aaf3
+      Cache-Control:
+      - public, max-age=600
+      X-Cache:
+      - Miss from cloudfront
+      Via:
+      - 1.1 0f653303bc95b26f01daff2926667902.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - DEN50-C2
+      X-Amz-Cf-Id:
+      - icnNPfqGgD0dnsm14vE1n3NfpnyiQRSJMemYfmNYUXNraEjebVUbJg==
+    body:
+      encoding: UTF-8
+      string: '{"page":2,"results":[],"total_pages":1,"total_results":1}'
+  recorded_at: Fri, 04 Dec 2020 02:23:04 GMT
+recorded_with: VCR 6.0.0
