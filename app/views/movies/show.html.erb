@@ -6,3 +6,12 @@
   <%=genre[:name]%>
  <% end %> </p>
 <p>Summary: <%=@movie_stats[:overview]%> </p>
+<h2><%= @movie_reviews[:results].count %> Review(s)</h2>
+<% @movie_reviews[:results].each do |review| %>
+  <h3>Author: <%= review[:author] %></h3>
+  <p><%= review[:content] %></p>
+<% end %>
+<h2>Cast</h2>
+<% to_ten(@movie_cast[:cast]).each do |cast| %>
+  <p><%= cast[:name] %> as <%= cast[:character] %></p>
+<% end %>
