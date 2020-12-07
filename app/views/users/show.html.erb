@@ -1,3 +1,41 @@
-<h1>Welcome, <%= current_user.name %>! </h1>
+<center>
+  <h1>
+    <%= current_user.name %>'s Dashboard
+  </h1>
 
-<%= button_to 'Logout', '/logout', method: :delete %>
+  <%= button_to 'Logout', '/logout', method: :delete %>
+
+  <%= button_to 'Discover Movies', discover_path, method: :get %>
+</center>
+<section class='friends'>
+  <h2>Friends</h2>
+
+  <%= form_tag "/friendship" do %>
+  <%= search_field_tag :email, nil, placeholder: 'Friends Email' %>
+  <%= submit_tag 'Add Friend' %>
+<% end %>
+
+<% if current_user.friends.any? %>
+  <% current_user.friends.each do |friend| %>
+    <section id='friend-<%= friend.id %>'>
+      <h4><%= friend.name %></h4>
+    </section>
+  <% end %>
+<% else %>
+  <h4>You currently have no friends!</h4>
+<% end %>
+</section>
+
+<h2>Viewing Parties</h2>
+<% if current_user.parties.any? %>
+<% current_user.parties.each do |party| %>
+  <section id='party-<%= party.id %>'>
+    <h4><%= party.movie.title %></h4>
+    <h4><%= party.date %></h4>
+    <h4><%= party.start_time %></h4>
+    <%= party.host_status(current_user) %>
+  </section>
+<% else %>
+  <h4>You currently have no parties</h4>
+<% end %>
+<% end %>

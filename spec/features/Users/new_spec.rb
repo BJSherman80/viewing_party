@@ -16,7 +16,7 @@ RSpec.describe "User registration form" do
 
     click_on "Register"
     expect(current_path).to eq(dashboard_path)
-    expect(page).to have_content("Welcome, #{name}!")
+    expect(page).to have_content("#{name}'s Dashboard")
     expect(page).to have_button("Logout")
   end
 

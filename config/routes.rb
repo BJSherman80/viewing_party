@@ -6,5 +6,15 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'users#show'
   #session
   post '/login', to: 'sessions#create'
-  delete '/logout', to: 'sessions#destroy' 
+  delete '/logout', to: 'sessions#destroy'
+
+  get '/discover', to: 'discover#index'
+
+  get '/movies', to: 'movies#index'
+  get '/movies/search', to: 'movies#search'
+  get '/movies/:id', to: 'movies#show'
+
+  post '/friendship', to: 'friendship#create'
+
+  post '/party', to: 'party#create'
 end
