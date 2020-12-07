@@ -12,6 +12,6 @@ class User < ApplicationRecord
   has_many :parties
 
   def duplicate_email?
-    User.pluck(:email).include?(email)
+    User.where(email: email)
   end
 end
