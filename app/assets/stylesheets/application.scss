@@ -24,7 +24,7 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-  background-color: DimGrey
+  background-color: LightGray
 }
 
 main {
@@ -37,16 +37,29 @@ footer {
   flex-direction: row;
 }
 
+.pad-25-top {
+  padding-top: 25px;
+}
+
+.pad-50-bottom {
+  padding-bottom: 50px;
+}
+
+.card-body {
+  margin: 15px;
+}
+
 .login-card {
   width: 50rem;
-  padding-top: 22px;
   border: solid 1px #999;
   box-shadow:  0 0 10px  rgba(0,12,0,0.6);
   -moz-box-shadow: 0 0 10px  rgba(0,12,0,0.6);
   -webkit-box-shadow: 0 0 10px  rgba(0,12,0,0.6);
   -o-box-shadow: 0 0 10px  rgba(0,12,0,0.6);
-  border-bottom-left-radius:15px;
-  border-bottom-right-radius:15px;
+  border-top-left-radius:12px;
+  border-top-right-radius:12px;
+  border-bottom-left-radius:12px;
+  border-bottom-right-radius:12px;
 }
 
 .register-card {
@@ -61,9 +74,6 @@ footer {
   border-bottom-right-radius:15px;
 }
 
-.card-body {
-  margin: 15px;
-}
 
 input[type=text], input[type=password] {
   align: center;
