@@ -12,6 +12,11 @@ class User < ApplicationRecord
   has_many :parties
 
   def duplicate_email?
-    User.where(email: email)
+    emails = User.where(email: email)
+    if emails == []
+      false
+    else
+      true
+    end
   end
 end
