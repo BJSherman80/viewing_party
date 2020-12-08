@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'users#show'
   #session
   post '/login', to: 'sessions#create'
-  delete '/logout', to: 'sessions#destroy'
+  get '/logout', to: 'sessions#destroy'
 
   get '/discover', to: 'discover#index'
 
