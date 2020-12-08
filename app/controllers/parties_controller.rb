@@ -26,6 +26,7 @@ class PartiesController < ApplicationController
       }
       render :new
     elsif party.save
+      create_guests(party)
       flash[:success] = 'Your viewing party has been created'
       redirect_to dashboard_path
     else
@@ -37,5 +38,18 @@ class PartiesController < ApplicationController
       }
       render :new
     end
+  end
+
+  private
+
+  def create_guests(party)
+    current_user.friends
+    guest_list = params[:guests][current_user.id.to_s].select do |guest_id|
+      User.find_by(id: guest_id)
+    end
+    guest_list.each do |guest|
+      party.guests.create!(guest_id: guest)
+    end
+    require "pry"; binding.pry
   end
 end
