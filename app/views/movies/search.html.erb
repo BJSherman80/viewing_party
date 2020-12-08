@@ -1,13 +1,33 @@
-<%= button_to 'Find Top Rated Movies', '/movies', method: :get %>
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col col-md-8 pad-50-bottom">
+      <h1><%= current_user.name %>'s Searched Movies Page </h1>
+    </div>
+  </div>
+</div>
 
-<%= form_with url: '/movies/search', method: :get, local: true do |f|%>
-  <%= f.text_field :search, placeholder: 'Search by movie title' %>
-  <%= f.submit 'Find Movies' %>
-<% end %>
+<div class="container">
+  <div class="row justify-content-md-right">
+    <div class="col col-md-7">
+      <%= button_to 'Find Top Rated Movies', '/movies', method: :get, class: "btn btn-info" %>
+    </div>
+    <div class="col-6">
+      <%= form_with url: '/movies/search', method: :get, local: true do |f|%>
+      <%= f.search_field :search, placeholder: 'Search by movie title' %>
+      <%= f.submit 'Find Movies', class: "btn btn-info" %>
+      <% end %>
+    </div>
+  </div>
+</div>
 
-<% @search_results.each do |movie| %>
-  <section class='movie'>
-    <p class='title'> <%= link_to movie[:title], "/movies/#{movie[:id]}" %></p>
-    <p class='vote_average'>Vote Average: <%= movie[:vote_average] %></p>
-  </section>
-<% end %>
+
+<div class="container">
+  <% @search_results.each do |movie| %>
+    <div class='movie'>
+      <div class="row justify-content-md-right">
+        <p class='title col col-md-8'> <%= link_to movie[:title], "/movies/#{movie[:id]}" %></p>
+        <p class='vote_average'>Vote Average: <%= movie[:vote_average] %></p>
+      </div>
+    </div>
+  <% end %>
+</div>
