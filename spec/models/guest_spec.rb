@@ -1,4 +1,4 @@
-require 'test_helper'
+require 'rails_helper'
 
 describe Guest, type: :model do
   describe 'relationships' do
