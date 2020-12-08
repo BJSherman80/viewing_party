@@ -19,4 +19,12 @@ class User < ApplicationRecord
       true
     end
   end
+
+  def invited_to_parties
+    Party.joins(:guests).where("guests.friend_id = ? ", self.id)
+  end
+
+  def all_parties
+    (self.parties) + (self.invited_to_parties)
+  end
 end
