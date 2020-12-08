@@ -7,9 +7,9 @@ class User < ApplicationRecord
   validates :password, confirmation: { case_sensitive: true }
   validates :email, uniqueness: true, presence: true
 
+  has_many :parties, dependent: :destroy
   has_many :friendships, dependent: :destroy
   has_many :friends, through: :friendships
-  has_many :parties
 
   def duplicate_email?
     emails = User.where(email: email)
