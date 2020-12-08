@@ -84,4 +84,50 @@ describe 'New viewing party' do
       expect(page).to have_content('Party duration cannot by shorter than movie length time.')
     end
   end
+
+  it "can see/click checkboxes next to friends if friends exist" do
+    VCR.use_cassette("Movie_Index_Page/can_search_by_movie_title", allow_playback_repeats: true, :record => :new_episodes) do
+      # user = User.create!(name: "Elvis", password: "test", email: 'user@email.com')
+      jake = User.create!(name: 'Jake', email: 'jake@email.com', password: 'jake')
+      dani = User.create!(name: 'Dani', email: 'dani@email.com', password: 'dani')
+      brett = User.create!(name: 'Brett', email: 'brett@email.com', password: 'brett')
+
+      friendship1 = Friendship.create(friend: brett, user: dani)
+      friendship2 = Friendship.create(friend: dani, user: brett)
+
+      friendship3 = Friendship.create(friend: jake, user: brett)
+      friendship4 = Friendship.create(friend: brett, user: jake)
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(brett)
+      visit discover_path
+
+      fill_in :search, with: "Happy Gilmore"
+      click_on "Find Movies"
+
+      click_link "Happy Gilmore"
+      click_button "Create Viewing Party for Movie"
+
+      expect(current_path).to eq(new_party_path)
+      expect(page).to have_content("Happy Gilmore")
+      expect(page).to have_content("Party duration")
+      expect(page).to have_content("Date")
+      expect(page).to have_content("Start time")
+      fill_in :party_duration, with: 160
+      fill_in :date, with: "12/05/2020"
+      fill_in :start_time, with: "7:00"
+
+      expect(page).to have_content(jake.name)
+      expect(page).to have_content(dani.name)
+
+      check("#{jake.name}")
+      check("#{dani.name}")
+
+      click_on "Create Party"
+
+      party = Party.last
+
+      expect(party.guests).to eq([jake, dani])
+      expect(current_path).to eq(dashboard_path)
+    end
+  end
 end
