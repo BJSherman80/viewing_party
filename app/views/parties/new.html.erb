@@ -13,10 +13,11 @@
   <%= f.label :start_time %>
   <%= f.time_field :start_time %>
   <h4>Invite Friends</h4>
-  <% current_user.friends.each do |friend| %>
-  <div id="friend-<%= friend.id %>">
-    <%= f.label "#{friend.name}" %>
-    <%= f.check_box(friend.name) %>
+  <% if current_user.friends.empty? %>
+    <p>Sorry, you have no friends</p>
+  <% else %>
+  <div class="checkbox, friends">
+     <%= collection_check_boxes(:guests, current_user.id, current_user.friends, :id, :name) %>
   </div>
   <% end %>
   <br>
