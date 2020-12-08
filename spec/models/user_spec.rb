@@ -36,6 +36,7 @@ describe User, type: :model do
     it '#all_parties' do
       expect(@brett.all_parties.sort).to eq([@lit_party, @jake_party].sort)
     end
-  end
+
+    end
 
 end
