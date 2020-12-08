@@ -4,11 +4,13 @@ describe Party, type: :model do
   describe 'relationships' do
     it { should belong_to :movie }
     it { should belong_to :user }
+    it { should have_many :guests }
   end
 
   describe 'validations' do
     it { should validate_presence_of :date }
     it { should validate_presence_of :start_time }
     it { should validate_presence_of :movie_id }
+    it { should validate_presence_of :party_duration }
   end
 end
