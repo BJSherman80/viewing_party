@@ -99,24 +99,24 @@ footer {
 }
 
 
-// input[type=text], input[type=password] {
-//   align: center;
-//   width: 70%;
-//   padding: 10px 10px;
-//   margin: 10px 0;
-//   display: block;
-//   border: 1px solid #ccc;
-//   box-sizing: border-box;
-// }
-//
-// input[type=text]:focus, input[type=password]:focus {
-//   background-color: #ddd;
-//   outline: none;
-// }
+input[type=text], input[type=password] {
+  align: center;
+  width: 70%;
+  padding: 10px 10px;
+  margin: 12px 0;
+  display: flex;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
 
 button {
-  background-color: DarkCyan;
-  color: black;
+  // background-color: DarkCyan;
+  // color: black;
   padding: 14px 20px;
   margin: 8px 0;
   border: none;
