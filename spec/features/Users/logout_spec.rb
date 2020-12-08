@@ -8,14 +8,13 @@ describe 'As a user' do
     fill_in :password, with: user.password
 
     click_on "Log In"
+    expect(current_path).to eq(dashboard_path)
+    expect(page).to have_link('Logout')
 
-    # expect(current_user).to eq(user)
-
-    click_on "Logout"
+    click_link "Logout"
 
     expect(current_path).to eq(root_path)
     expect(page).to have_content("You've been successfully logged out")
     expect(page).to have_button("Log In")
-    # expect(current_user).to eq(nil)
   end
 end
