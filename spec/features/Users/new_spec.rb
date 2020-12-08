@@ -80,4 +80,14 @@ RSpec.describe "User registration form" do
     expect(current_path).to eq(registration_path)
     expect(page).to have_content("You are missing required fields.")
   end
+
+  it "can see link to return to login page" do
+    visit registration_path
+
+    expect(page).to have_link("Already Registered? Log in Here")
+
+    click_link "Already Registered? Log in Here"
+
+    expect(current_path).to eq(root_path)
+  end
 end
