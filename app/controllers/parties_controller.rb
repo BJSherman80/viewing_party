@@ -16,7 +16,16 @@ class PartiesController < ApplicationController
       movie_id: movie.id,
       user_id: current_user.id
     )
-    if party.save
+
+    if params[:party_duration].to_i < movie[:runtime]
+      flash[:error] = 'Party duration cannot by shorter than movie length time.'
+      @movie = {
+        title: params[:movie_title],
+        runtime: params[:movie_runtime],
+        id: params[:movie_api_id]
+      }
+      render :new
+    elsif party.save
       flash[:success] = 'Your viewing party has been created'
       redirect_to dashboard_path
     else
@@ -29,13 +38,4 @@ class PartiesController < ApplicationController
       render :new
     end
   end
-
-  # private
-  # def party_params
-  #   params.permit(:movie_id, :party_duration, :date, :start_time)
-  # end
-
-  # def movie_params
-  #   params.permit(:movie_title, :movie_runtime, :movie_api_id)
-  # end
 end
