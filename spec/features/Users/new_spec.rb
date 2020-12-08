@@ -17,7 +17,7 @@ RSpec.describe "User registration form" do
     click_on "Register"
     expect(current_path).to eq(dashboard_path)
     expect(page).to have_content("#{name}'s Dashboard")
-    expect(page).to have_button("Logout")
+    expect(page).to have_link("Logout")
   end
 
   it 'see flash for when email exists' do
