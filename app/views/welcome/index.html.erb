@@ -1,18 +1,19 @@
 <center>
-  <h1>Welcome to Viewing Party!</h1>
-  <h3>Viewing Party is an app</h3>
-
-  <%= form_with url: "/login", method: :post, local: true do %>
-  <div class="form-group">
-    <div class="col-md-6">
-      <%= label_tag(:email) %>
-      <%= text_field_tag(:email)  %>
-    </div>
+  <div class="pad-50-bottom">
+    <h1>Welcome to Viewing Party!</h1>
+    <h3>Viewing Party is an app</h3>
   </div>
-    <%= label_tag(:password) %>
-    <%= text_field_tag(:password) %>
-    <%= submit_tag("Log In", class:"btn btn-primary") %>
-  <% end %>
 
-  <%= button_to 'Register New User', '/registration', method: :get %>
+  <section class="login-card card pad-25-top pad-50-bottom">
+    <div class="card-body">
+      <%= form_with url: "/login", method: :post, local: true do %>
+        <h4><%= label_tag(:email) %></h4>
+        <%= text_field_tag(:email)  %>
+        <h4><%= label_tag(:password) %></h4>
+        <%= text_field_tag(:password) %>
+        <%= submit_tag("Log In", class:"btn btn-info") %>
+      <% end %>
+    </div>
+    <%= button_to 'Register New User', '/registration', method: :get, :class => "btn btn-info"%>
+  </section>
 </center>
