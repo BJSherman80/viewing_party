@@ -26,8 +26,8 @@
 <% end %>
 </section>
 <h2>Viewing Parties</h2>
-<% if current_user.parties.any? %>
-    <% current_user.parties.each do |party| %>
+<% if current_user.all_parties.any? %>
+    <% current_user.all_parties.each do |party| %>
     <section id='party-<%= party.id %>'>
       <h4>Title: <%= party.movie.title %></h4>
       <h4>Date: <%= party.date %></h4>
