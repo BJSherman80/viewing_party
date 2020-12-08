@@ -1,6 +1,7 @@
 <center>
   <div class="pad-50-bottom">
-    <h1>New User Registration</h1>
+    <h1>Welcome to Viewing Party</h1>
+    <h4>Please Register for an Account</h4>
   </div>
 
   <section class='register-card card pad-25-top pad-50-bottom'>
@@ -15,7 +16,8 @@
         <%= f.label :password_confirmation %>
         <%= f.password_field :password_confirmation, placeholder: 'Re-Enter Password', required: true %>
         <%= f.submit "Register", class: 'btn btn-info' %>
-      <% end %>
+        <% end %>
+        <%= link_to 'Already Registered? Log in Here', root_path  %>
     </div>
   </section>
 </center>
