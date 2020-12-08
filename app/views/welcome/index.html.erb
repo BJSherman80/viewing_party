@@ -7,9 +7,9 @@
   <section class="login-card card pad-25-top pad-50-bottom">
     <div class="card-body">
       <%= form_with url: "/login", method: :post, local: true do %>
-        <h4><%= label_tag(:email) %></h4>
+        <%= label_tag(:email) %>
         <%= text_field_tag(:email)  %>
-        <h4><%= label_tag(:password) %></h4>
+        <%= label_tag(:password) %>
         <%= text_field_tag(:password) %>
         <%= submit_tag("Log In", class:"btn btn-info") %>
       <% end %>
