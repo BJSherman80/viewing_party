@@ -43,13 +43,15 @@ class PartiesController < ApplicationController
   private
 
   def create_guests(party)
-    current_user.friends
+    # guest_list = params[:guests][current_user.id.to_s].select do |guest_id|
+    #   User.find_by(id: guest_id)
+    # end
     guest_list = params[:guests][current_user.id.to_s].select do |guest_id|
-      User.find_by(id: guest_id)
+      User.find(guest_id)
     end
-    guest_list.each do |guest|
-      party.guests.create!(guest_id: guest)
+    guest_list.each do |user_id|
+      party.guests.create!(guest_id: user_id)
+      # User.find(user_id).parties << party
     end
-    require "pry"; binding.pry
   end
 end
