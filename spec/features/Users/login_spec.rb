@@ -13,7 +13,7 @@ RSpec.describe "Logging In" do
     expect(current_path).to eq(dashboard_path)
 
     expect(page).to have_content("Welcome, #{user.name}")
-    expect(page).to have_button("Logout")
+    expect(page).to have_link("Logout")
   end
 
   it "cannot log in with bad credentials" do
