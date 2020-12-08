@@ -1,25 +1,21 @@
 <center>
-  <div class="w3-content w3-container w3-padding-54" id="registration-pg">
-    <h1 class="w3-center">New User Registration</h1>
+  <div class="pad-50-bottom">
+    <h1>New User Registration</h1>
   </div>
 
-  <section class='register-card'>
+  <section class='register-card card pad-25-top pad-50-bottom'>
     <div class="card-body">
-      <form action="/registration" method="post">
-          <label for="name"><strong><%= label_tag :name %></strong></label>
-          <input type="text" placeholder="Name" name="name" required>
-
-          <label for="email"><strong><%= label_tag :email %></strong></label>
-          <input type="text" placeholder="Enter Email" name="email" required>
-
-          <label for="password"><strong><%= label_tag :password %></strong></label>
-          <input type="password" placeholder="Enter Password" name="password" required>
-
-          <label for="password_confirmation"><strong><%= label_tag :password_confirmation %></strong></label>
-          <input type="password" placeholder="Password Confirmation" name="password_confirmation" required>
-
-          <button type="submit" class="registerbtn"> <%= submit_tag "Register" %></button>
-      </form>
+      <%= form_with method: :post, url: '/registration', local: true do |f| %>
+        <%= f.label :name %>
+        <%= f.text_field :name, placeholder: 'Enter Name' %>
+        <%= f.label :email %>
+        <%= f.text_field :email, placeholder: 'Enter Email' %>
+        <%= f.label :password %>
+        <%= f.password_field :password, placeholder: 'Enter Password' %>
+        <%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation, placeholder: 'Re-Enter Password', required: true %>
+        <%= f.submit "Register", class: 'btn btn-info' %>
+      <% end %>
     </div>
   </section>
 </center>
