@@ -130,4 +130,23 @@ describe 'New viewing party' do
       expect(current_path).to eq(dashboard_path)
     end
   end
+
+  it "An invited friend sees party on their dashboard" do
+    jake = User.create!(name: 'Jake', email: 'jake@email.com', password: 'jake')
+    brett = User.create!(name: 'Brett', email: 'brett@email.com', password: 'brett')
+    jake_movie = Movie.create!(title: "The Fifth Element" , runtime: 117 , api_id: 400)
+    friendship = Friendship.create!(friend: brett, user: jake)
+    jake_party = jake.parties.create!(date: "12/31/1999", start_time: "11:59", party_duration: 120, movie_id: jake_movie.id)
+    guest = Guest.create!(party_id: jake_party.id, guest_id: brett.id)
+
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(brett)
+
+    visit dashboard_path
+save_and_open_page
+    expect(page).to have_content(jake_movie.title)
+    expect(page).to have_content(jake_party.date)
+    expect(page).to have_content(jake_party.start_time)
+    expect(page).to have_content("2 hr 0 min")
+    expect(page).to have_content("Invited")
+  end
 end
