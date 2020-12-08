@@ -2,7 +2,7 @@
 <h1>Create a Viewing Party</h1>
 
 <%= form_with url: parties_path, method: :post, local: true do |f| %>
-  <h3>Movie: <%= @movie[:title] %></h3>
+  <h3><%= @movie[:title] %></h3>
   <%= f.hidden_field :movie_title, value: @movie[:title] %>
   <%= f.hidden_field :movie_runtime, value: @movie[:runtime] %>
   <%= f.hidden_field :movie_api_id, value: @movie[:id] %>
@@ -12,9 +12,15 @@
   <%= f.date_field :date %>
   <%= f.label :start_time %>
   <%= f.time_field :start_time %>
+  <h4>Invite Friends</h4>
   <% current_user.friends.each do |friend| %>
+  <div id="friend-<%= friend.id %>">
+    <%= f.label "#{friend.name}" %>
     <%= f.check_box(friend.name) %>
+  </div>
   <% end %>
+  <br>
+  <br>
   <%= f.submit 'Create Party' %>
 <% end %>
 </center>
