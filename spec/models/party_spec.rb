@@ -10,5 +10,6 @@ describe Party, type: :model do
     it { should validate_presence_of :date }
     it { should validate_presence_of :start_time }
     it { should validate_presence_of :movie_id }
+    it { should validate_presence_of :party_duration }
   end
 end
