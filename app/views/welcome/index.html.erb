@@ -6,12 +6,12 @@
 
   <section class="login-card card pad-25-top pad-50-bottom">
     <div class="card-body">
-      <%= form_with url: "/login", method: :post, local: true do %>
-        <%= label_tag(:email) %>
-        <%= text_field_tag(:email)  %>
-        <%= label_tag(:password) %>
-        <%= text_field_tag(:password) %>
-        <%= submit_tag("Log In", class:"btn btn-info") %>
+      <%= form_with method: :post, url: "/login", local: true do |f|%>
+        <%= f.label :email %>
+        <%= f.text_field :email, placeholder: "Enter Email"  %>
+        <%= f.label :password %>
+        <%= f.text_field :password, placeholder: "Enter Password" %>
+        <%= f.submit "Log In", class:"btn btn-info" %>
       <% end %>
     </div>
     <%= button_to 'Register New User', '/registration', method: :get, :class => "btn btn-info"%>
