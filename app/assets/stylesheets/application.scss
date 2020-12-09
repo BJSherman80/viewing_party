@@ -37,6 +37,16 @@ footer {
   flex-direction: row;
 }
 
+hr {
+  display: block;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: 70px;
+  margin-right: 70px;
+  border-style: inset;
+  border-width: 1px;
+}
+
 .nav-link {
   display: flex;
   position: absolute;
@@ -98,6 +108,11 @@ footer {
   border-bottom-right-radius:15px;
 }
 
+// .review-card {
+//   width: 100rem;
+//   border: solid 1px #999;
+// }
+
 
 input[type=text], input[type=password] {
   align: center;
@@ -132,3 +147,10 @@ button:hover {
 .container {
   padding: 16px;
 }
+
+// .show_container {
+//   display: grid;
+//   justify-content: space-evenly;
+//   // grid-template-columns: auto auto auto;
+//   padding: 10px;
+// }
