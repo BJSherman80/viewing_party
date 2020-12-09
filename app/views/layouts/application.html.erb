@@ -9,7 +9,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <%= javascript_include_tag 'application' %>
   </head>
+
   <body>
+    <main>
     <% if !current_user.nil? %>
     <div class="container">
       <div class="navbar navbar-inverse navbar-fixed-top" id="navbar-<%= current_user.id %>">
@@ -23,12 +25,13 @@
       </div>
     </div>
     <% end %>
-    <main>
+    <section class="container">
       <% flash.each do |name, msg| %>
-    <div class="<%= name %>-flash">
-      <p><%= msg %></p>
-    </div>
-    <% end %>
+      <div class="<%= name %>-flash">
+        <p><%= msg %></p>
+      </div>
+      <% end %>
+    </section>
       <%= yield %>
     </main>
 
