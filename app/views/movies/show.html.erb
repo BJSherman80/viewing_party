@@ -12,7 +12,7 @@
       <h1 class="align-top"> <%=@movie_stats[:title]%> </h1>
     </div>
     <div class="col col-md-4 pad-25-top">
-      <%= button_to "Create Viewing Party for Movie", '/party/new', method: :get, class: "btn btn-info" %>
+      <%= button_to "Create Viewing Party for Movie", new_party_path, method: :get, params: { movie: @movie_stats}, class: "btn btn-info" %>
     </div>
   </div>
 </div>
