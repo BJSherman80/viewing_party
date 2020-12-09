@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get '/discover', to: 'discover#index'
 
   get '/movies', to: 'movies#index'
-  get '/movies/search', to: 'movies#search'
+  get '/movies/search', to: 'search#index'
   get '/movies/:id', to: 'movies#show'
 
   post '/friendship', to: 'friendship#create'
