@@ -24,17 +24,11 @@
     </div>
     <% end %>
     <main>
-      <div class="container">
-        <div class="row">
-          <div class="col-sm w3-cyan">
-            <% flash.each do |name, msg| %>
-            <div class= "<%=name%>-flash">
-              <p><%= msg %></p>
-            </div>
-            <% end %>
-          </div>
-        </div>
-      </div>
+      <% flash.each do |name, msg| %>
+    <div class="<%= name %>-flash">
+      <p><%= msg %></p>
+    </div>
+    <% end %>
       <%= yield %>
     </main>
 
