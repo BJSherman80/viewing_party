@@ -13,14 +13,11 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       flash[:notice] = "Welcome #{user.name}"
       redirect_to dashboard_path
-    elsif user.duplicate_email?
-      flash[:notice] = user.errors.full_messages.uniq
-      render :new
     elsif params[:password] != params[:password_confirmation]
       flash[:failure] = "Password and Password Confirmation fields did not match."
       render :new
     else
-      flash[:failure] = "You are missing required fields."
+      flash[:failure] = user.errors.full_messages.first
       render :new
     end
   end

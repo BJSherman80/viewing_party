@@ -11,14 +11,6 @@ class User < ApplicationRecord
   has_many :friendships, dependent: :destroy
   has_many :friends, through: :friendships
 
-  def duplicate_email?
-    emails = User.where(email: email)
-    if emails == []
-      false
-    else
-      true
-    end
-  end
 
   def invited_to_parties
     Party.joins(:guests).where("guests.friend_id = ? ", self.id)
