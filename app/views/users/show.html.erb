@@ -1,40 +1,82 @@
 <center>
-  <h1>
-    <%= current_user.name %>'s Dashboard
-  </h1>
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col col-md-12 pad-50-bottom">
+      <h1><%= current_user.name %>'s Dashboard </h1>
+    </div>
+  </div>
+</div>
 
-  <%= button_to 'Logout', '/logout', method: :delete %>
-
-  <%= button_to 'Discover Movies', discover_path, method: :get %>
+<div class="container">
+  <div class="row justify-content-md-right">
+    <div class="col col-md-12">
+      <%= button_to 'Discover Movies', discover_path, method: :get, class: "btn btn-info" %>
+    </div>
+</div>
 </center>
+
+
 <section class='friends'>
-  <h2>Friends</h2>
+  <div class="container">
+    <div class="row">
+      <div class="col col-md-12">
+        <h2>Friends</h2>
+      </div>
+    </div>
+  </div>
 
-  <%= form_tag "/friendship" do %>
-  <%= search_field_tag :email, nil, placeholder: 'Friends Email' %>
-  <%= submit_tag 'Add Friend' %>
-<% end %>
+  <hr/>
 
-<% if current_user.friends.any? %>
-  <% current_user.friends.each do |friend| %>
-    <section id='friend-<%= friend.id %>'>
-      <h4><%= friend.name %></h4>
-    </section>
-  <% end %>
-<% else %>
-  <h4>You currently have no friends!</h4>
-<% end %>
-</section>
-<h2>Viewing Parties</h2>
-<% if current_user.all_parties.any? %>
-    <% current_user.all_parties.each do |party| %>
-    <section id='party-<%= party.id %>'>
-      <h4>Title: <%= party.movie.title %></h4>
-      <h4>Date: <%= party.date %></h4>
-      <h4>Time: <%= party.start_time %></h4>
-      <%= party.host_status(current_user) %>
-    </section>
+  <div class="container">
+    <div class="row justify-content-right">
+      <div class="col col-md-5">
+        <%= form_with url: friendship_path, method: :post, local: true do |f| %>
+        <%= f.text_field :email, placeholder: "Friends Email" %>
+      </div>
+      <div class="col col-md-7 pad-15-top">
+      <%= f.submit "Add Friend", class: "btn btn-info" %>
+      </div>
+      <% end %>
+    </div>
+    <% if current_user.friends.any? %>
+    <% current_user.friends.each do |friend| %>
+      <section id='friend-<%= friend.id %>'>
+        <h4><%= friend.name %></h4>
+      </section>
+      <% end %>
+    <% else %>
+    <h4>You currently have no friends!</h4>
     <% end %>
-<% else %>
-    <h4>You currently have no parties</h4>
-<% end %>
+  </div>
+</section>
+
+<div class="container">
+  <div class="row">
+    <div class="col col-md-6">
+      <h2>Viewing Parties</h2>
+    </div>
+  </div>
+</div>
+
+<hr/>
+
+<section class="parties">
+  <div class="card-columns">
+    <% if current_user.all_parties.any? %>
+      <% current_user.all_parties.each do |party| %>
+      <div class="card p-3 party-card party text-center" id="party-<%= party.id %>">
+        <div class="card-body">
+          <p class="card-text">
+          <strong><%= party.movie.title %></strong><br />
+          <strong><%= party.date %></strong><br />
+          <strong><%= party.start_time %></strong><br />
+          <%= party.host_status(current_user) %>
+          </p>
+        </div>
+      </div>
+      <% end %>
+    <% else %>
+      <h4>You currently have no parties</h4>
+    <% end %>
+  </div>
+</section>
