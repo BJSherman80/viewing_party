@@ -65,20 +65,20 @@ RSpec.describe "User registration form" do
     fill_in :password_confirmation, with: password
     click_on "Register"
     expect(current_path).to eq(registration_path)
-    expect(page).to have_content("You are missing required fields.")
+    expect(page).to have_content("Name can't be blank")
 
     fill_in :name, with: name
     fill_in :password, with: password
     fill_in :password_confirmation, with: password
     click_on "Register"
     expect(current_path).to eq(registration_path)
-    expect(page).to have_content("You are missing required fields.")
+    expect(page).to have_content("Email can't be blank")
 
     fill_in :email, with: email
     fill_in :name, with: name
     click_on "Register"
     expect(current_path).to eq(registration_path)
-    expect(page).to have_content("You are missing required fields.")
+    expect(page).to have_content("Password can't be blank")
   end
 
   it "can see link to return to login page" do

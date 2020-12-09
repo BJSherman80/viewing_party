@@ -1,0 +1,27 @@
+<center>
+<h1>Create a Viewing Party</h1>
+
+<%= form_with url: parties_path, method: :post, local: true do |f| %>
+  <h3><%= @movie[:title] %></h3>
+  <%= f.hidden_field :movie_title, value: @movie[:title] %>
+  <%= f.hidden_field :movie_runtime, value: @movie[:runtime] %>
+  <%= f.hidden_field :movie_api_id, value: @movie[:id] %>
+  <%= f.label :party_duration %>
+  <%= f.text_field :party_duration, placeholder: @movie[:runtime] %>
+  <%= f.label :date %>
+  <%= f.date_field :date %>
+  <%= f.label :start_time %>
+  <%= f.time_field :start_time %>
+  <h4>Invite Friends</h4>
+  <% if current_user.friends.empty? %>
+    <p>Sorry, you have no friends</p>
+  <% else %>
+  <div class="checkbox, friends">
+     <%= collection_check_boxes(:guests, current_user.id, current_user.friends, :id, :name) %>
+  </div>
+  <% end %>
+  <br>
+  <br>
+  <%= f.submit 'Create Party' %>
+<% end %>
+</center>

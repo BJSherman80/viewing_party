@@ -7,11 +7,16 @@ class User < ApplicationRecord
   validates :password, confirmation: { case_sensitive: true }
   validates :email, uniqueness: true, presence: true
 
+  has_many :parties, dependent: :destroy
   has_many :friendships, dependent: :destroy
   has_many :friends, through: :friendships
-  has_many :parties
 
-  def duplicate_email?
-    User.pluck(:email).include?(email)
+
+  def invited_to_parties
+    Party.joins(:guests).where("guests.friend_id = ? ", self.id)
+  end
+
+  def all_parties
+    (self.parties) + (self.invited_to_parties)
   end
 end

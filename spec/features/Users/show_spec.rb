@@ -4,7 +4,7 @@ describe 'As a logged in user, on my dashboard' do
   before :each do
     @user = User.create(name: "Elvis", password: "test", email: 'user@email.com')
     @movie = Movie.create(title: 'The Fifth Element', runtime: 120, api_id: 0)
-    @party = Party.create!(user_id: @user.id, date: '01/01/2020', start_time: '07:00', movie_id: @movie.id)
+    @party = Party.create!(user_id: @user.id, date: '01/01/2020', start_time: '07:00', movie_id: @movie.id, party_duration: 120)
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
   end
