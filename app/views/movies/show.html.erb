@@ -1,17 +1,83 @@
-<h1> <%=@movie_stats[:title]%> </h1>
-<%= button_to "Create Viewing Party for Movie", '/party/new', method: :get %>
-<p>Vote Average: <%=@movie_stats[:vote_average]%> </p>
-<p>Runtime: <%=hour_min(@movie_stats[:runtime])%> </p>
- <p>Genre(s): <%@movie_stats[:genres].each do |genre| %>
-  <%=genre[:name]%>
- <% end %> </p>
-<p>Summary: <%=@movie_stats[:overview]%> </p>
-<h2><%= @movie_reviews[:results].count %> Review(s)</h2>
-<% @movie_reviews[:results].each do |review| %>
-  <h3>Author: <%= review[:author] %></h3>
-  <p><%= review[:content] %></p>
-<% end %>
-<h2>Cast</h2>
-<% to_ten(@movie_cast[:cast]).each do |cast| %>
-  <p><%= cast[:name] %> as <%= cast[:character] %></p>
-<% end %>
+<center>
+  <div class="row justify-content-md-center">
+    <div class="col col-md-12 pad-50-bottom">
+      <h1><%= current_user.name %>'s Movie Show Page </h1>
+    </div>
+  </div>
+</center>
+
+<div class="container">
+  <div class="row justify-content-start">
+    <div class="col col-md-8">
+      <h1 class="align-top"> <%=@movie_stats[:title]%> </h1>
+    </div>
+    <div class="col col-md-4 pad-25-top">
+      <%= button_to "Create Viewing Party for Movie", '/party/new', method: :get, class: "btn btn-info" %>
+    </div>
+  </div>
+</div>
+
+<section class="movie-details">
+  <div class="container">
+    <div class="row justify-content-md-right">
+      <div class="col col-md-4">
+        <strong>Vote Average:</strong> <%=@movie_stats[:vote_average]%>
+      </div>
+      <div class="col col-md-4">
+        <strong>Runtime:</strong> <%=hour_min(@movie_stats[:runtime])%>
+      </div>
+      <div class="col col-md-4">
+        <strong>Genre(s):</strong> <%@movie_stats[:genres].each do |genre| %>
+          <%=genre[:name]%>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr style="height:2px;color:gray;background-color:gray">
+
+<div class="container">
+  <div class="row">
+    <div class="col col-md-12">
+      <h3>Summary</h3>
+      <p><%=@movie_stats[:overview]%></p>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col col-md-6">
+      <h3>Cast</h3>
+    </div>
+    <% to_ten(@movie_cast[:cast]).each do |cast| %>
+    <div class="col col-md-6">
+      <p><%= cast[:name] %> as <%= cast[:character] %></p>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+<hr style="height:2px;color:gray;background-color:gray">
+
+<div class="container">
+  <div class="row">
+    <div class="col col-md-12">
+      <h2><%= @movie_reviews[:results].count %> Review(s)</h2>
+    </div>
+  </div>
+</div>
+
+<section class="review-card card">
+  <div class="container">
+    <div class="row">
+      <% @movie_reviews[:results].each do |review| %>
+        <div class="col col-md-12 pad-50-bottom">
+        <h3>Author: <%= review[:author] %></h3>
+        <p><%= review[:content] %></p>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</section>
