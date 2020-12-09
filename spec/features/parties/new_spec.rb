@@ -105,6 +105,7 @@ describe 'New viewing party' do
       click_on "Find Movies"
 
       click_link "Happy Gilmore"
+
       click_button "Create Viewing Party for Movie"
 
       expect(current_path).to eq(new_party_path)
@@ -145,7 +146,7 @@ describe 'New viewing party' do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(brett)
 
     visit dashboard_path
-    
+
     expect(page).to have_content(jake_movie.title)
     expect(page).to have_content(jake_party.date)
     expect(page).to have_content(jake_party.start_time)
