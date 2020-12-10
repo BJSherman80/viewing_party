@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
-
-  def new
-  end
+  def new; end
 
   def show
     render file: '/public/401' unless current_user
@@ -14,7 +12,7 @@ class UsersController < ApplicationController
       flash[:notice] = "Welcome #{user.name}"
       redirect_to dashboard_path
     elsif params[:password] != params[:password_confirmation]
-      flash[:failure] = "Password and Password Confirmation fields did not match."
+      flash[:failure] = 'Password and Password Confirmation fields did not match.'
       render :new
     else
       flash[:failure] = user.errors.full_messages.first
@@ -22,10 +20,9 @@ class UsersController < ApplicationController
     end
   end
 
-private
+  private
 
   def user_params
     params.permit(:name, :email, :password, :password_confirmation)
   end
-
 end

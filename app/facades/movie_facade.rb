@@ -29,11 +29,11 @@ class MovieFacade
 
   def self.service_identifier(search)
     if search == 'now_playing'
-      self.fetch_now_playing
-    elsif search == '' || search == nil
-      self.fetch_top_40_movies
+      fetch_now_playing
+    elsif ['', nil].include?(search)
+      fetch_top_40_movies
     else
-      self.fetch_movie_search_results(search)
+      fetch_movie_search_results(search)
     end
   end
 

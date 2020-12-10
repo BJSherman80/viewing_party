@@ -1,8 +1,6 @@
 class User < ApplicationRecord
   has_secure_password
-  # validates_presence_of :name, require: true
   validates :name, presence: true
-  # validates_presence_of :password, require: true
   validates :password, presence: true
   validates :password, confirmation: { case_sensitive: true }
   validates :email, uniqueness: true, presence: true
@@ -11,12 +9,11 @@ class User < ApplicationRecord
   has_many :friendships, dependent: :destroy
   has_many :friends, through: :friendships
 
-
   def invited_to_parties
-    Party.joins(:guests).where("guests.friend_id = ? ", self.id)
+    Party.joins(:guests).where('guests.friend_id = ? ', id)
   end
 
   def all_parties
-    (self.parties) + (self.invited_to_parties)
+    parties + invited_to_parties
   end
 end

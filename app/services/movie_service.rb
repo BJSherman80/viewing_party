@@ -43,11 +43,9 @@ class MovieService
   end
 
   def self.now_playing
-    now_playing = to_json("/3/movie/now_playing")
+    now_playing = to_json('/3/movie/now_playing')
     now_playing[:results]
   end
-
-  private
 
   def self.conn
     Faraday.new(url: 'https://api.themoviedb.org') do |f|

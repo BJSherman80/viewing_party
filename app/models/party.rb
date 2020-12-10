@@ -2,7 +2,7 @@ class Party < ApplicationRecord
   belongs_to :movie, dependent: :destroy
   belongs_to :user, dependent: :destroy
 
-  has_many :guests
+  has_many :guests, dependent: :destroy
 
   validates :date, presence: true
   validates :start_time, presence: true
@@ -11,9 +11,9 @@ class Party < ApplicationRecord
 
   def host_status(user)
     if user.id == user_id
-      "Hosting"
+      'Hosting'
     else
-      "Invited"
+      'Invited'
     end
   end
 end

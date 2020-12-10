@@ -18,7 +18,6 @@ class ApplicationController < ActionController::Base
   end
 
   def to_ten(array)
-    new_array = array[0..9]
+    array[0..9]
   end
-
 end

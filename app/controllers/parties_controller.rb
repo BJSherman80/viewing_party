@@ -46,14 +46,14 @@ class PartiesController < ApplicationController
   private
 
   def create_guests(party)
-      if params[:guests] != nil
-        guest_list = params[:guests][current_user.id.to_s].select do |guest_id|
-         User.find(guest_id) if guest_id != ""
-       end
-        guest_list.each do |user_id|
-         party.guests.create!(friend_id: user_id)
-      end
-      x = Guest.party_guests(party.guests)
+    return if params[:guests].nil?
+
+    guest_list = params[:guests][current_user.id.to_s].select do |guest_id|
+      User.find(guest_id) if guest_id != ''
     end
+    guest_list.each do |user_id|
+      party.guests.create!(friend_id: user_id)
+    end
+    Guest.party_guests(party.guests)
   end
 end
