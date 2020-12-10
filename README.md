@@ -2,7 +2,7 @@
 
 ### About this Project
 
-Viewing party is an application that utilizes the Movie Database API. Users can see the top 40 movies or search for a specific moive of their liking. Users can add friends, can create movie viewing parties and can invite friends or be invited by friends to a movie viewing party.
+Viewing party is an application that utilizes the Movie Database API. Users can see the top 40 movies or search for a specific movie of their liking. Users can add friends, can create movie viewing parties and can invite friends or be invited by friends to a movie viewing party.
 
 ## Summary
 
