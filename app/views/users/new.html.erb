@@ -1,12 +1,23 @@
-<h1>New User Registration</h1>
-<%= form_tag '/registration', method: :post do  %>
-  <%= label_tag :name %>
-  <%= text_field_tag :name %>
-  <%= label_tag :email %>
-  <%= text_field_tag :email %>
-  <%= label_tag :password %>
-  <%= password_field_tag :password %>
-  <%= label_tag :password_confirmation %>
-  <%= password_field_tag :password_confirmation %>
-  <%= submit_tag "Register" %>
-<% end %>
+<center>
+  <div class="pad-50-bottom">
+    <h1>Welcome to Viewing Party</h1>
+    <h4>Please Register for an Account</h4>
+  </div>
+
+  <section class='register-card card pad-25-top pad-50-bottom'>
+    <div class="card-body">
+      <%= form_with method: :post, url: '/registration', local: true do |f| %>
+        <%= f.label :name %>
+        <%= f.text_field :name, placeholder: 'Enter Name' %>
+        <%= f.label :email %>
+        <%= f.text_field :email, placeholder: 'Enter Email' %>
+        <%= f.label :password %>
+        <%= f.password_field :password, placeholder: 'Enter Password' %>
+        <%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation, placeholder: 'Re-Enter Password', required: true %>
+        <%= f.submit "Register", class: 'btn btn-info' %>
+        <% end %>
+        <%= link_to 'Already Registered? Log in Here', root_path  %>
+    </div>
+  </section>
+</center>

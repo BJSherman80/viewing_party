@@ -1,0 +1,174 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+// @import url('https://www.w3schools.com/w3css/4/w3.css');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  background-color: LightGray
+}
+
+main {
+  flex: 1;
+}
+
+footer {
+  display: flex;
+  align-self: baseline;
+  flex-direction: row;
+}
+
+hr {
+  height: 2px;
+  color: gray;
+  background-color: gray;
+  display: block;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: 70px;
+  margin-right: 70px;
+  border-style: inset;
+  border-width: 1px;
+}
+
+.nav-link {
+  display: flex;
+  position: absolute;
+  right: 70%;
+}
+
+.pad-25-top {
+  padding-top: 25px;
+}
+
+.pad-15-top {
+  padding-top: 15px;
+}
+
+.pad-50-bottom {
+  padding-bottom: 50px;
+}
+
+.pad-12-bottom {
+  padding-bottom: 12px;
+}
+
+.card-body {
+  margin: 2px;
+  // display: flex;
+}
+
+.centered-container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+.card-columns {
+  margin-left: 120px;
+}
+
+.login-card {
+  width: 50rem;
+  border: solid 1px #999;
+  box-shadow:  0 0 10px  rgba(0,12,0,0.6);
+  -moz-box-shadow: 0 0 10px  rgba(0,12,0,0.6);
+  -webkit-box-shadow: 0 0 10px  rgba(0,12,0,0.6);
+  -o-box-shadow: 0 0 10px  rgba(0,12,0,0.6);
+  border-top-left-radius:12px;
+  border-top-right-radius:12px;
+  border-bottom-left-radius:12px;
+  border-bottom-right-radius:12px;
+}
+
+.register-card {
+  width: 50rem;
+  border: solid 1px #999;
+  box-shadow:  0 0 10px  rgba(0,12,0,0.6);
+  -moz-box-shadow: 0 0 10px  rgba(0,12,0,0.6);
+  -webkit-box-shadow: 0 0 10px  rgba(0,12,0,0.6);
+  -o-box-shadow: 0 0 10px  rgba(0,12,0,0.6);
+  border-top-left-radius:12px;
+  border-top-right-radius:12px;
+  border-bottom-left-radius:15px;
+  border-bottom-right-radius:15px;
+}
+
+.party-card {
+  width: 20rem;
+  border: solid 1px #999;
+  box-shadow:  0 0 10px  rgba(0,12,0,0.6);
+  -moz-box-shadow: 0 0 10px  rgba(0,12,0,0.6);
+  -webkit-box-shadow: 0 0 10px  rgba(0,12,0,0.6);
+  -o-box-shadow: 0 0 10px  rgba(0,12,0,0.6);
+  border-top-left-radius:12px;
+  border-top-right-radius:12px;
+  border-bottom-left-radius:15px;
+  border-bottom-right-radius:15px;
+}
+
+// .review-card {
+//   width: 100rem;
+//   border: solid 1px #999;
+// }
+
+
+input[type=text], input[type=password] {
+  align: center;
+  width: 70%;
+  padding: 10px 10px;
+  margin: 12px 0;
+  display: flex;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+button {
+  // background-color: DarkCyan;
+  // color: black;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 25%;
+  display: block;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.container {
+  padding: 16px;
+}
+
+// .show_container {
+//   display: grid;
+//   justify-content: space-evenly;
+//   // grid-template-columns: auto auto auto;
+//   padding: 10px;
+// }
