@@ -1,24 +1,37 @@
 class MovieFacade
-  def self.fetch_top_40_movie_data
-    conn = Faraday.new(url: 'https://api.themoviedb.org') do |f|
-      f.params['api_key'] = ENV['MOVIE_API_KEY']
+  def self.fetch_top_40_movies
+    MovieService.top_rated.map do |movie_data|
+      MovieObj.new(movie_data)
     end
+  end
 
-    @movies = []
-    page_num = 0
-    2.times do
-      page_num += 1
-
-      response = conn.get('/3/movie/top_rated') do |req|
-        req.params[:page] = page_num
-      end
-
-      movie_data = JSON.parse(response.body, symbolize_names: true)
-      movies = movie_data[:results].map do |movie|
-        MovieObj.new(movie)
-      end
-      @movies << movies
+  def self.fetch_movie_search_results(search_word)
+    MovieService.search(search_word).map do |movie_data|
+      MovieObj.new(movie_data)
     end
-    @movies = @movies.flatten
+  end
+
+  def self.movie_details(movie_id)
+    MovieObj.new(MovieService.movie_details(movie_id))
+  end
+
+  def self.fetch_movie_reviews(movie_id)
+    MovieService.reviews(movie_id).map do |review|
+      ReviewObj.new(review)
+    end
+  end
+
+  def self.fetch_movie_cast(movie_id)
+    MovieService.credits(movie_id).map do |cast|
+      CastObj.new(cast)
+    end
+  end
+
+  def self.top_rated_or_search(search)
+    if search == '' || search == nil
+      self.fetch_top_40_movies
+    else
+      self.fetch_movie_search_results(search)
+    end
   end
 end
