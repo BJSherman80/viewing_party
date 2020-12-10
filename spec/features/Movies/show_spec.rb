@@ -19,7 +19,7 @@ RSpec.describe 'Movies show page' do
       expect(page).to have_content("Vote Average: 6.6")
       expect(page).to have_content("Runtime: 1 hr 32 min")
       expect(page).to have_content("Genre(s): Comedy")
-      expect(page).to have_content("Summary: Failed hockey player-turned-golf whiz Happy Gilmore -- whose unconventional approach and antics on the grass courts the ire of rival Shooter McGavin -- is determined to win a PGA tournament so he can save his")
+      expect(page).to have_content("Failed hockey player-turned-golf whiz Happy Gilmore -- whose unconventional approach and antics on the grass courts the ire of rival Shooter McGavin -- is determined to win a PGA tournament so he can save his")
       expect(page).to have_content("1 Review(s)")
       expect(page).to have_content("Adam Sandler as Happy Gilmore")
     # end
@@ -38,7 +38,7 @@ RSpec.describe 'Movies show page' do
       click_link "Happy Gilmore"
       click_button "Create Viewing Party for Movie"
 
-      expect(current_path).to eq('/parties/new')
+      expect(current_path).to eq(new_party_path)
     # end
   end
 end

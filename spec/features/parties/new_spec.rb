@@ -105,6 +105,7 @@ describe 'New viewing party' do
       click_on "Find Movies"
 
       click_link "Happy Gilmore"
+
       click_button "Create Viewing Party for Movie"
 
       expect(current_path).to eq(new_party_path)

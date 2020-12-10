@@ -1,19 +1,83 @@
+<center>
+  <div class="row justify-content-md-center">
+    <div class="col col-md-12 pad-50-bottom">
+      <h1><%= current_user.name %>'s Movie Show Page </h1>
+    </div>
+  </div>
+</center>
 
-<h1> <%=@movie.title%> </h1>
+<div class="container">
+  <div class="row justify-content-start">
+    <div class="col col-md-8">
+      <h1 class="align-top"> <%=@movie.title%> </h1>
+    </div>
+    <div class="col col-md-4 pad-25-top">
+      <%= button_to "Create Viewing Party for Movie", new_party_path, method: :get, params: { movie_title: @movie.title, movie_runtime: @movie.runtime, movie_api_id: @movie.api_id}, class: "btn btn-info" %>
+    </div>
+  </div>
+</div>
 
-<%= button_to "Create Viewing Party for Movie", '/parties/new', method: :get, params: { movie_title: @movie.title, movie_runtime: @movie.runtime, movie_api_id: @movie.api_id } %>
-<p>Vote Average: <%=@movie.vote_average%> </p>
-<p>Runtime: <%=hour_min(@movie.runtime)%> </p>
- <p>Genre(s): <%@movie.genres.each do |genre| %>
-  <%=genre[:name]%>
- <% end %> </p>
-<p>Summary: <%=@movie.summary%> </p>
-<h2><%= @reviews.count %> Review(s)</h2>
-<% @reviews.each do |review| %>
-  <h3>Author: <%= review.author %></h3>
-  <p><%= review.content %></p>
-<% end %>
-<h2>Cast</h2>
-<% to_ten(@cast).each do |cast| %>
-  <p><%= cast.name %> as <%= cast.character %></p>
-<% end %>
+<section class="movie-details">
+  <div class="container">
+    <div class="row justify-content-md-right">
+      <div class="col col-md-4">
+        <strong>Vote Average:</strong> <%=@movie.vote_average%>
+      </div>
+      <div class="col col-md-4">
+        <strong>Runtime:</strong> <%=hour_min(@movie.runtime)%>
+      </div>
+      <div class="col col-md-4">
+        <strong>Genre(s):</strong> <%@movie.genres.each do |genre| %>
+          <%=genre[:name]%>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr/>
+
+<div class="container">
+  <div class="row">
+    <div class="col col-md-12">
+      <h3>Summary</h3>
+      <p><%=@movie.summary%></p>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col col-md-6">
+      <h3>Cast</h3>
+    </div>
+    <% to_ten(@cast).each do |cast| %>
+    <div class="col col-md-6">
+      <p><%= cast.name %> as <%= cast.character %></p>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+<hr/>
+
+<div class="container">
+  <div class="row">
+    <div class="col col-md-12">
+      <h2><%= @reviews.count %> Review(s)</h2>
+    </div>
+  </div>
+</div>
+
+<section class="review-card card">
+  <div class="container">
+    <div class="row">
+      <% @reviews.each do |review| %>
+        <div class="col col-md-12 pad-50-bottom">
+        <h3>Author: <%= review.author %></h3>
+        <p><%= review.content %></p>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</section>

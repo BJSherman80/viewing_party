@@ -3,20 +3,38 @@
   <head>
     <title>ViewingParty</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all' %>
+    <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <%= javascript_include_tag 'application' %>
   </head>
 
   <body>
     <main>
-      <% flash.each do |name, msg| %>
-    <div class= "<%=name%>-flash">
-      <p><%= msg %></p>
+    <% if !current_user.nil? %>
+    <div class="container">
+      <div class="navbar navbar-inverse navbar-fixed-top" id="navbar-<%= current_user.id %>">
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="nav-item">
+              <a class="nav-link" href="<%=logout_path%>">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
-  <% end %>
+    <% end %>
+    <section class="container">
+      <% flash.each do |name, msg| %>
+      <div class="<%= name %>-flash">
+        <p><%= msg %></p>
+      </div>
+      <% end %>
+    </section>
       <%= yield %>
     </main>
+
     <footer>
       <img src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg" alt="The MovieDB Logo" width="75px" style="margin:10px" >
       <div>
@@ -28,5 +46,6 @@
         </p>
       </div>
     </footer>
+
   </body>
 </html>

@@ -1,10 +1,10 @@
-  <div class="container">
-    <div class="row justify-content-md-center">
-      <div class="col col-md-8 pad-50-bottom">
-        <h1><%= current_user.name %>'s Top Rated Movies Page </h1>
-      </div>
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col col-md-8 pad-50-bottom">
+      <h1><%= current_user.name %>'s Searched Movies Page </h1>
     </div>
   </div>
+</div>
 
 <div class="container">
   <div class="row justify-content-md-right">
@@ -20,13 +20,14 @@
   </div>
 </div>
 
+
 <div class="container">
-  <% @movies.each do |movie| %>
-  <div class="movie">
-    <div class='row justify-content-md-right'>
-      <p class='title col col-md-8'> <%= link_to movie.title, "/movies/#{movie.api_id}" %></p>
-      <p class='vote_average'>Vote Average: <%= movie.vote_average %></p>
+  <% @search_results.each do |movie| %>
+    <div class='movie'>
+      <div class="row justify-content-md-right">
+        <p class='title col col-md-8'> <%= link_to movie[:title], "/movies/#{movie[:id]}" %></p>
+        <p class='vote_average'>Vote Average: <%= movie[:vote_average] %></p>
+      </div>
     </div>
-  </div>
   <% end %>
 </div>
