@@ -9,6 +9,7 @@ Viewing party is an application that utilizes the Movie Database API. Users can 
   - [Getting Started](#getting-started)
   - [Versioning](#versioning)
   - [Runing the tests](#running-the-tests)
+  - [Database Schema](#database-schema)
   - [Deployment](#deployment)
   - [Built With](#built-with)
   - [Authors](#authors)
@@ -43,6 +44,10 @@ The following versions are recommended for this project.
 To run all of the tests, you will use `bundle exec rspec`
 
 To run a specific test, you will use `bundle exec rspec:<test line number goes here>`
+
+## Database Schema
+
+![Screen Shot 2020-12-09 at 6 56 33 PM](https://user-images.githubusercontent.com/60626984/101712251-5738c680-3a52-11eb-8b87-e16432d7aeb7.png)
 
 ## Deployment
 
