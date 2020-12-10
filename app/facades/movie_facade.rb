@@ -34,4 +34,10 @@ class MovieFacade
       self.fetch_movie_search_results(search)
     end
   end
+
+  def self.fetch_now_playing
+    MovieService.now_playing.map do |movie|
+      MovieObj.new(movie)
+    end
+  end
 end
