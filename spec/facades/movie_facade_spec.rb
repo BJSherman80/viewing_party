@@ -43,7 +43,7 @@ describe 'Movie Facade' do
 
   it 'will run search if search params exist' do
     search = 'happy'
-    movies = MovieFacade.top_rated_or_search(search)
+    movies = MovieFacade.service_identifier(search)
 
     expect(movies).to be_an(Array)
     expect(movies.first).to be_a(MovieObj)
@@ -53,11 +53,28 @@ describe 'Movie Facade' do
 
   it 'will show top 40 if search is empty' do
     search = ''
-    movies = MovieFacade.top_rated_or_search(search)
+    movies = MovieFacade.service_identifier(search)
 
     expect(movies).to be_an(Array)
     expect(movies.first).to be_a(MovieObj)
     expect(movies.first.title).to be_a(String)
     expect(movies.count).to eq(40)
+  end
+
+  it 'will show movies now playing in theaters' do
+    movies = MovieFacade.fetch_now_playing
+
+    expect(movies).to be_an(Array)
+    expect(movies.first).to be_a(MovieObj)
+    expect(movies.first.title).to be_a(String)
+  end
+
+  it 'will show now playing if that is searched for' do
+    search = 'now_playing'
+    movies = MovieFacade.service_identifier(search)
+
+    expect(movies).to be_an(Array)
+    expect(movies.first).to be_a(MovieObj)
+    expect(movies.first.title).to be_a(String)
   end
 end

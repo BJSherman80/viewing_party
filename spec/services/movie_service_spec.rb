@@ -63,4 +63,15 @@ describe MovieService do
     expect(cast.first).to have_key(:character)
     expect(cast.first[:character]).to be_a(String)
   end
+
+  it 'now_playing' do
+    movies = MovieService.now_playing
+
+    expect(movies).to be_a(Array)
+    expect(movies.first).to be_a(Hash)
+    expect(movies.first).to have_key(:title)
+    expect(movies.first[:title]).to be_a(String)
+    expect(movies.first).to have_key(:release_date)
+    expect(movies.first[:release_date]).to be_a(String)
+  end
 end

@@ -4,6 +4,7 @@
   </div>
   <div class="pad-12-bottom">
     <%= button_to 'Find Top Rated Movies', movies_path, method: :get, :class => "btn btn-info" %>
+    <%= button_to 'Movies Playing Now', movies_path, method: :get, params: { :search => 'now_playing' }, :class => "btn btn-info" %>
   </div>
   <div class="pad-12-bottom">
     <h3>OR</h3>
