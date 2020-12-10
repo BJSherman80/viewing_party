@@ -10,6 +10,10 @@
 <% @movies.each do |movie| %>
   <section class='movie'>
     <p class='title'> <%= link_to movie.title, "/movies/#{movie.api_id}" %></p>
-    <p class='vote_average'>Vote Average: <%= movie.vote_average %></p>
+    <% if params[:search] == 'now_playing' %>
+      <p class='vote_average'>Release Date: <%= movie.release_date %></p>
+    <% else %>
+      <p class='vote_average'>Vote Average: <%= movie.vote_average %></p>
+    <% end %>
   </section>
 <% end %>
