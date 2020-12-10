@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'New viewing party' do
   it 'See a form to add party details and create a party' do
-    VCR.use_cassette("Movie_Index_Page/can_search_by_movie_title", allow_playback_repeats: true, :record => :new_episodes) do
+    # VCR.use_cassette("Movie_Index_Page/can_search_by_movie_title", allow_playback_repeats: true, :record => :new_episodes) do
       user = User.create!(name: "Elvis", password: "test", email: 'user@email.com')
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
       visit discover_path
@@ -26,11 +26,11 @@ describe 'New viewing party' do
 
       expect(current_path).to eq(dashboard_path)
       expect(page).to have_content('Your viewing party has been created')
-    end
+    # end
   end
 
   it "can not create a party with empty fields" do
-    VCR.use_cassette("Movie_Index_Page/can_search_by_movie_title", allow_playback_repeats: true, :record => :new_episodes) do
+    # VCR.use_cassette("Movie_Index_Page/can_search_by_movie_title", allow_playback_repeats: true, :record => :new_episodes) do
       user = User.create!(name: "Elvis", password: "test", email: 'user@email.com')
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
       visit discover_path
@@ -54,11 +54,11 @@ describe 'New viewing party' do
 
       expect(current_path).to eq(parties_path)
       expect(page).to have_content('Missing fields. Please try again.')
-    end
+    # end
   end
 
   it "cannot make a party duration shorter than movie length time" do
-    VCR.use_cassette("Movie_Index_Page/can_search_by_movie_title", allow_playback_repeats: true, :record => :new_episodes) do
+    # VCR.use_cassette("Movie_Index_Page/can_search_by_movie_title", allow_playback_repeats: true, :record => :new_episodes) do
       user = User.create!(name: "Elvis", password: "test", email: 'user@email.com')
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
       visit discover_path
@@ -82,11 +82,11 @@ describe 'New viewing party' do
 
       expect(current_path).to eq(parties_path)
       expect(page).to have_content('Party duration cannot by shorter than movie length time.')
-    end
+    # end
   end
 
   it "can see/click checkboxes next to friends if friends exist" do
-    VCR.use_cassette("Movie_Index_Page/can_search_by_movie_title", allow_playback_repeats: true, :record => :new_episodes) do
+    # VCR.use_cassette("Movie_Index_Page/can_search_by_movie_title", allow_playback_repeats: true, :record => :new_episodes) do
       # user = User.create!(name: "Elvis", password: "test", email: 'user@email.com')
       jake = User.create!(name: 'Jake', email: 'jake@email.com', password: 'jake')
       dani = User.create!(name: 'Dani', email: 'dani@email.com', password: 'dani')
@@ -127,9 +127,9 @@ describe 'New viewing party' do
 
       party = Party.last
 
-      expect(Guest.party_guests(party.guests)).to eq([jake, dani])
+      expect(Guest.party_guests(party.guests).sort).to eq([jake, dani].sort)
       expect(current_path).to eq(dashboard_path)
-    end
+    # end
   end
 
   it "A user can see invited to parties and hosting parties " do

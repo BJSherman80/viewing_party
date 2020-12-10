@@ -24,8 +24,8 @@
   <% @movies.each do |movie| %>
   <div class="movie">
     <div class='row justify-content-md-right'>
-      <p class='title col col-md-8'> <%= link_to movie[:title], "/movies/#{movie[:id]}" %></p>
-      <p class='vote_average'>Vote Average: <%= movie[:vote_average] %></p>
+      <p class='title col col-md-8'> <%= link_to movie.title, "/movies/#{movie.api_id}" %></p>
+      <p class='vote_average'>Vote Average: <%= movie.vote_average %></p>
     </div>
   </div>
   <% end %>

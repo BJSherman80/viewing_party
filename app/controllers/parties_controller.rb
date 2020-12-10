@@ -1,6 +1,10 @@
 class PartiesController < ApplicationController
   def new
-    @movie = params['movie']
+    @movie = MovieObj.new(
+      id: params[:movie_api_id],
+      title: params[:movie_title],
+      runtime: params[:movie_runtime]
+    )
   end
 
   def create
@@ -16,14 +20,13 @@ class PartiesController < ApplicationController
       movie_id: movie.id,
       user_id: current_user.id
     )
-
     if params[:party_duration].to_i < movie[:runtime]
       flash[:error] = 'Party duration cannot by shorter than movie length time.'
-      @movie = {
+      @movie = MovieObj.new(
         title: params[:movie_title],
         runtime: params[:movie_runtime],
         id: params[:movie_api_id]
-      }
+      )
       render :new
     elsif party.save
       create_guests(party)
@@ -31,11 +34,11 @@ class PartiesController < ApplicationController
       redirect_to dashboard_path
     else
       flash[:error] = 'Missing fields. Please try again.'
-      @movie = {
+      @movie = MovieObj.new(
         title: params[:movie_title],
         runtime: params[:movie_runtime],
         id: params[:movie_api_id]
-      }
+      )
       render :new
     end
   end

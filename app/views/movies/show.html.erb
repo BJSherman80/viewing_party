@@ -9,10 +9,10 @@
 <div class="container">
   <div class="row justify-content-start">
     <div class="col col-md-8">
-      <h1 class="align-top"> <%=@movie_stats[:title]%> </h1>
+      <h1 class="align-top"> <%=@movie.title%> </h1>
     </div>
     <div class="col col-md-4 pad-25-top">
-      <%= button_to "Create Viewing Party for Movie", new_party_path, method: :get, params: { movie: @movie_stats}, class: "btn btn-info" %>
+      <%= button_to "Create Viewing Party for Movie", new_party_path, method: :get, params: { movie_title: @movie.title, movie_runtime: @movie.runtime, movie_api_id: @movie.api_id}, class: "btn btn-info" %>
     </div>
   </div>
 </div>
@@ -21,13 +21,13 @@
   <div class="container">
     <div class="row justify-content-md-right">
       <div class="col col-md-4">
-        <strong>Vote Average:</strong> <%=@movie_stats[:vote_average]%>
+        <strong>Vote Average:</strong> <%=@movie.vote_average%>
       </div>
       <div class="col col-md-4">
-        <strong>Runtime:</strong> <%=hour_min(@movie_stats[:runtime])%>
+        <strong>Runtime:</strong> <%=hour_min(@movie.runtime)%>
       </div>
       <div class="col col-md-4">
-        <strong>Genre(s):</strong> <%@movie_stats[:genres].each do |genre| %>
+        <strong>Genre(s):</strong> <%@movie.genres.each do |genre| %>
           <%=genre[:name]%>
         <% end %>
       </div>
@@ -41,7 +41,7 @@
   <div class="row">
     <div class="col col-md-12">
       <h3>Summary</h3>
-      <p><%=@movie_stats[:overview]%></p>
+      <p><%=@movie.summary%></p>
     </div>
   </div>
 </div>
@@ -51,9 +51,9 @@
     <div class="col col-md-6">
       <h3>Cast</h3>
     </div>
-    <% to_ten(@movie_cast[:cast]).each do |cast| %>
+    <% to_ten(@cast).each do |cast| %>
     <div class="col col-md-6">
-      <p><%= cast[:name] %> as <%= cast[:character] %></p>
+      <p><%= cast.name %> as <%= cast.character %></p>
     </div>
     <% end %>
   </div>
@@ -64,7 +64,7 @@
 <div class="container">
   <div class="row">
     <div class="col col-md-12">
-      <h2><%= @movie_reviews[:results].count %> Review(s)</h2>
+      <h2><%= @reviews.count %> Review(s)</h2>
     </div>
   </div>
 </div>
@@ -72,10 +72,10 @@
 <section class="review-card card">
   <div class="container">
     <div class="row">
-      <% @movie_reviews[:results].each do |review| %>
+      <% @reviews.each do |review| %>
         <div class="col col-md-12 pad-50-bottom">
-        <h3>Author: <%= review[:author] %></h3>
-        <p><%= review[:content] %></p>
+        <h3>Author: <%= review.author %></h3>
+        <p><%= review.content %></p>
       </div>
       <% end %>
     </div>
