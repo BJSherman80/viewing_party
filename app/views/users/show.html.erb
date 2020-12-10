@@ -59,16 +59,16 @@
 <hr/>
 
 <section class="parties">
-  <div class="card-columns">
-    <% if current_user.all_parties.any? %>
+  <div class="card-columns pad-50-bottom pad-15-top">
+      <% if current_user.all_parties.any? %>
       <% current_user.all_parties.each do |party| %>
       <div class="card p-3 party-card party text-center" id="party-<%= party.id %>">
         <div class="card-body">
           <p class="card-text">
-          <strong><%= party.movie.title %></strong><br />
-          <strong><%= party.date %></strong><br />
-          <strong><%= party.start_time %></strong><br />
-          <%= party.host_status(current_user) %>
+            <strong><%= party.movie.title %></strong><br />
+            <strong><%= party.date %></strong><br />
+            <strong><%= party.start_time %></strong><br />
+            <%= party.host_status(current_user) %>
           </p>
         </div>
       </div>
