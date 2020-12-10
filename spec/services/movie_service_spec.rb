@@ -69,9 +69,9 @@ describe MovieService do
 
     expect(movies).to be_a(Array)
     expect(movies.first).to be_a(Hash)
-    expect(cast.first).to have_key(:name)
-    expect(cast.first[:name]).to be_a(String)
-    expect(cast.first).to have_key(:release_date)
-    expect(cast.first[:release_date]).to be_a(String)
+    expect(movies.first).to have_key(:title)
+    expect(movies.first[:title]).to be_a(String)
+    expect(movies.first).to have_key(:release_date)
+    expect(movies.first[:release_date]).to be_a(String)
   end
 end
