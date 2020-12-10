@@ -20,4 +20,15 @@ RSpec.describe "As a User" do
     click_on "Find Movies"
     expect(current_path).to eq(movies_path)
   end
+
+  it 'can see a button to find movies now playing' do
+    user = User.create!(name: "Elvis", password: "test", email: 'user@email.com')
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+    visit discover_path
+
+    click_button "Movies Playing Now"
+
+    expect(current_path).to eq(movies_path)
+  end
 end

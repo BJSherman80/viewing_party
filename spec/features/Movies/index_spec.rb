@@ -41,4 +41,15 @@ RSpec.describe 'Movie Index Page' do
       expect(page).to have_css('.vote_average')
     end
   end
+
+  it 'can see upcoming movies' do
+    user = User.create!(name: "Elvis", password: "test", email: 'user@email.com')
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+    visit discover_path
+
+    click_button "Movies Playing Now"
+
+    expect(page).to have_content("Release Date")
+  end
 end
