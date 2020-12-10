@@ -5,9 +5,8 @@ describe MovieObj do
     attr = {
       title: 'Crash',
       runtime: 120,
-      api_key: 12345,
-      vote_average: 8.0,
-      id: 1
+      id: 12345,
+      vote_average: 8.0
     }
 
     movie = MovieObj.new(attr)
@@ -15,7 +14,7 @@ describe MovieObj do
     expect(movie).to be_a(MovieObj)
     expect(movie.title).to eq('Crash')
     expect(movie.runtime).to eq(120)
-    expect(movie.api_key).to eq(12345)
+    expect(movie.api_id).to eq(12345)
     expect(movie.vote_average).to eq(8.0)
   end
 end
