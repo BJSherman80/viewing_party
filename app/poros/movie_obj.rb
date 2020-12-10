@@ -1,11 +1,12 @@
 class MovieObj
-  attr_reader :title, :runtime, :api_key, :vote_average, :id
+  attr_reader :title, :runtime, :vote_average, :api_id, :genres, :summary
 
   def initialize(attr)
     @title = attr[:title]
     @runtime = attr[:runtime]
-    @api_key = attr[:api_key]
     @vote_average = attr[:vote_average]
-    @id = attr[:id]
+    @api_id = attr[:id]
+    @genres = attr[:genres]
+    @summary = attr[:overview]
   end
 end
