@@ -6,6 +6,6 @@ class MoviesController < ApplicationController
   end
 
   def index
-    @movies = MovieFacade.top_rated_or_search(params[:search])
+    @movies = MovieFacade.service_identifier(params[:search])
   end
 end
