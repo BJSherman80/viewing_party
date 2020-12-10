@@ -10,14 +10,14 @@ RSpec.describe "As a User" do
     expect(page).to have_button('Find Top Rated Movies')
   end
 
-  it "can see form to search for movies by title", :vcr do
+  it "can see form to search for movies by title" do
     user = User.create!(name: "Elvis", password: "test", email: 'user@email.com')
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-    visit discover_path 
+    visit discover_path
 
     fill_in :search, with: "Happy Gilmore"
     click_on "Find Movies"
-    expect(current_path).to eq(movies_search_path)
+    expect(current_path).to eq(movies_path)
   end
 end
