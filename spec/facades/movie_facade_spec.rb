@@ -60,4 +60,12 @@ describe 'Movie Facade' do
     expect(movies.first.title).to be_a(String)
     expect(movies.count).to eq(40)
   end
+
+  it 'will show movies now playing in theaters' do
+    movies = MovieFacade.fetch_now_playing
+
+    expect(movies).to be_an(Array)
+    expect(movies.first).to be_a(MovieObj)
+    expect(movies.first.title).to be_a(String)
+  end
 end
