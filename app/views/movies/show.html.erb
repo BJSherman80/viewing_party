@@ -1,17 +1,19 @@
-<h1> <%=@movie_stats[:title]%> </h1>
-<%= button_to "Create Viewing Party for Movie", '/parties/new', method: :get, params: { movie: @movie_stats } %>
-<p>Vote Average: <%=@movie_stats[:vote_average]%> </p>
-<p>Runtime: <%=hour_min(@movie_stats[:runtime])%> </p>
- <p>Genre(s): <%@movie_stats[:genres].each do |genre| %>
+
+<h1> <%=@movie.title%> </h1>
+
+<%= button_to "Create Viewing Party for Movie", '/parties/new', method: :get, params: { movie_title: @movie.title, movie_runtime: @movie.runtime, movie_api_id: @movie.api_id } %>
+<p>Vote Average: <%=@movie.vote_average%> </p>
+<p>Runtime: <%=hour_min(@movie.runtime)%> </p>
+ <p>Genre(s): <%@movie.genres.each do |genre| %>
   <%=genre[:name]%>
  <% end %> </p>
-<p>Summary: <%=@movie_stats[:overview]%> </p>
-<h2><%= @movie_reviews[:results].count %> Review(s)</h2>
-<% @movie_reviews[:results].each do |review| %>
-  <h3>Author: <%= review[:author] %></h3>
-  <p><%= review[:content] %></p>
+<p>Summary: <%=@movie.summary%> </p>
+<h2><%= @reviews.count %> Review(s)</h2>
+<% @reviews.each do |review| %>
+  <h3>Author: <%= review.author %></h3>
+  <p><%= review.content %></p>
 <% end %>
 <h2>Cast</h2>
-<% to_ten(@movie_cast[:cast]).each do |cast| %>
-  <p><%= cast[:name] %> as <%= cast[:character] %></p>
+<% to_ten(@cast).each do |cast| %>
+  <p><%= cast.name %> as <%= cast.character %></p>
 <% end %>
