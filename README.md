@@ -49,6 +49,7 @@ To run a specific test, you will use `bundle exec rspec:<test line number goes h
 From the command line, do the following:
   - `heroku create`
   - `git push heroku master`
+  - `heroku run rake db:create`
   - `heroku run rake db:migrate`
   - You may also want to run the following command to seed your heroku database:
   - `heroku run rake db:seed`
