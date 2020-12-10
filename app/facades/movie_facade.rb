@@ -27,8 +27,10 @@ class MovieFacade
     end
   end
 
-  def self.top_rated_or_search(search)
-    if search == '' || search == nil
+  def self.service_identifier(search)
+    if search == 'now_playing'
+      self.fetch_now_playing
+    elsif search == '' || search == nil
       self.fetch_top_40_movies
     else
       self.fetch_movie_search_results(search)
