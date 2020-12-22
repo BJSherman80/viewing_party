@@ -1,4 +1,4 @@
-# [Viewing Party](https://viewing-party-bdj.herokuapp.com/)
+# [Viewing Party](https://viewing-party-bdj.herokuapp.com/) (Live On Heroku)
 
 ### About this Project
 
